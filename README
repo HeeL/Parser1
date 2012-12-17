@@ -1,0 +1,6 @@
+Parse and merge two files.
+
+Example of usage:
+
+`./parser.rb --i1 file01.txt,1,[1-10,12,18-22] --i2 file02.txt,5 --o file3.txt`
+
