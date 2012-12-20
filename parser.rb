@@ -1,18 +1,16 @@
 #!/usr/bin/env ruby
 
 require 'optparse'
-require_relative 'lib/parser'
+require 'csv'
+require_relative 'lib/options'
+require_relative 'lib/cleaner'
+require_relative 'lib/math_proc'
+require_relative 'lib/joiner'
 
-parser = Parser.new
+options = Options.new
 
-OptionParser.new do |opts|
-  opts.on('', '--i1 FILE1,COL1,[COL_1,COL_2..COL_N]', String, 'Specify input file' ) do |args|
-    parser.get_info(args, 1)
-  end
-  opts.on('', '--i2 FILE2,COL2,[COL_1,COL_2..COL_N]', String, 'Specify input file2' ) do |args|
-    parser.get_info(args, 2)
-  end
-  opts.on('', '--o FILE', String, 'Specify output file' ) do |file|
-    parser.output_file = file
-  end
-end.parse!
+options.files.each do |file|
+  Cleaner.new(file).clean_file
+  MathProc.new("clean_#{file}").calc_file
+  Joiner.new("calc_clean_#{file}").join_file
+end
