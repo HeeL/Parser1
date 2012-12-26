@@ -4,6 +4,8 @@
 require 'optparse'
 #for working with CSV format
 require 'csv'
+#for calc average and standard deviation
+require 'descriptive-statistics'
 #MathProc class that does all the work
 require_relative 'lib/math_proc'
 

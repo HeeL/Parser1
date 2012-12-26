@@ -56,6 +56,8 @@ class Cleaner
     row.each do |s|
       #down case the string and clean it
       s = s.to_s.strip.downcase.gsub(/[^\x20-\x7E]/, '')
+      s.gsub!(/['"]$/, '')
+      s.gsub!(/^['"]/, '')
       #convert booleans
       s = '1' if ['true', 'y'].include?(s)
       s = '0' if ['false', 'n'].include?(s)

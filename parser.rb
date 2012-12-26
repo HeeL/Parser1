@@ -4,6 +4,8 @@
 require 'optparse'
 #for working with CSV format
 require 'csv'
+#for calc average and standard deviation
+require 'descriptive-statistics'
 #include all the classes we are working with
 require_relative 'lib/options'
 require_relative 'lib/cleaner'
